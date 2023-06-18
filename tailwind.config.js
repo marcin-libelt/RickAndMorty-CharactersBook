@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-const tokens = require("./design-tokens/tokens");
-const transpile = require("./design-tokens/token-to-tailwind");
+const tokens = require("./src/app/design-tokens/tokens");
+const transpile = require("./src/app/design-tokens/token-to-tailwind");
 
 const tailwindPropsNameMap = new Map([["fontWeights", "fontWeight"]]);
 
@@ -12,15 +12,18 @@ const classes = {
   borderRadius: transpile(tokens.borderRadius),
 };
 
+console.log(classes);
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./public/.{svg}",
   ],
   theme: {
-    ...classes,
     extend: {
+      ...classes,
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
