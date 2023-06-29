@@ -12,8 +12,6 @@ const classes = {
   borderRadius: transpile(tokens.borderRadius),
 };
 
-console.log(classes);
-
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",

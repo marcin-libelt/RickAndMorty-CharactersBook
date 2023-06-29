@@ -3,10 +3,10 @@ import { gql } from "@apollo/client";
 import { Metadata } from "next";
 import EpisodeList from "@/app/ui/Episode/List";
 import Picture from "@/app/ui/Character/Picture";
-import { Character } from "@/app/types/Character";
+import { Character } from "@/app/types";
 
-const query = gql`
-  query Query($filter: FilterCharacter) {
+const GET_CHARACTER_BY_NAME = gql`
+  query GetCharcterByName($filter: FilterCharacter) {
     characters(filter: $filter) {
       info {
         count
@@ -39,10 +39,10 @@ export default async function Page({
   params: { slug: string };
 }): Promise<{}> {
   const { data } = await getClient().query({
-    query,
+    query: GET_CHARACTER_BY_NAME,
     variables: {
       filter: {
-        name: decodeURI(params.slug),
+        name: params.slug.replace(/-/g, " "),
       },
     },
   });
@@ -130,10 +130,10 @@ const classes = {
     "flex items-center justify-between rounded-lg w-full bg-gray-200 p-5 my-5",
 };
 
-type Props = {
+interface Props {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
-};
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params

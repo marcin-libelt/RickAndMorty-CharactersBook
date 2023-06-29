@@ -1,10 +1,10 @@
 "use client";
 
-import { Episode } from "@/app/types/Character";
+import { Episode } from "@/app/types";
 import ListItem from "./ListItem";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import useTabs from "@/app/hooks/useTabs";
-import { groupBy } from "../../lib/helpers";
+import { groupBy } from "@/app/lib/helpers";
 
 // workaround for 'match' method typescipt issue
 type ItemEpisode = Episode & {
@@ -29,7 +29,10 @@ export default function List({ items }: any): JSX.Element {
       <Tabs selectedTabClassName={"bg-black text-white"}>
         <TabList className={"flex border-b border-l mb-5"}>
           {list.map((tab, index) => (
-            <Tab className={"p-3 border border-b-0 border-l-0 cursor-pointer"}>
+            <Tab
+              key={index}
+              className={"p-3 border border-b-0 border-l-0 cursor-pointer"}
+            >
               <h3>{tab}</h3>
             </Tab>
           ))}

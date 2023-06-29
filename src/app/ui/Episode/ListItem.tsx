@@ -1,4 +1,4 @@
-import { Episode } from "@/app/types/Character";
+import { Episode } from "@/app/types";
 
 export default function ({ episode, name, air_date }: Episode) {
   return (

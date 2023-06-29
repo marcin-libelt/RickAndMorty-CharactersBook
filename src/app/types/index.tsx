@@ -1,15 +1,15 @@
-export type Episode = {
+export interface Episode {
   air_date: string;
   name: string;
   id: string;
   episode: string;
-};
+}
 
-export type Origin = {
+export interface Origin {
   name: string;
-};
+}
 
-export type Character = {
+export interface Character {
   image: string;
   name: string;
   id: string;
@@ -19,4 +19,4 @@ export type Character = {
   gender: string;
   type: string;
   episode: [Episode];
-};
+}
