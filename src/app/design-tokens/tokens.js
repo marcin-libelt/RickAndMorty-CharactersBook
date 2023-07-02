@@ -1,7 +1,12 @@
-/**
- * Do not edit directly
- * Generated on Tue, 13 Jun 2023 16:35:23 GMT
- */
+const COLOR_PRIMARY = "#fb8500ff";
+const COLOR_PRIMARY_LIGHTER = "#ffb703ff";
+const COLOR_SECONDARY = "#023047ff";
+const COLOR_SECONDARY_LIGHTER = "#219ebcff";
+const COLOR_BACKGROUND = "#8ecae6ff";
+const COLOR_BLUE = "#2d3390";
+const COLOR_RED = "#d55050";
+const COLOR_ORANGE = "#d65f22";
+const COLOR_GREEN = "#2c8613";
 
 module.exports = {
   borderRadius: {
@@ -20,31 +25,39 @@ module.exports = {
   },
   colors: {
     primary: {
-      value: "#00B1CA",
+      value: COLOR_PRIMARY,
+      type: "color",
+    },
+    "primary-lighter": {
+      value: COLOR_PRIMARY_LIGHTER,
       type: "color",
     },
     secondary: {
-      value: "#c91800",
+      value: COLOR_SECONDARY,
       type: "color",
     },
     "secondary-lighter": {
-      value: "#d37063",
+      value: COLOR_SECONDARY_LIGHTER,
       type: "color",
     },
-    "secondary-darker": {
-      value: "#a31401",
+    background: {
+      value: COLOR_BACKGROUND,
       type: "color",
     },
-    black: {
-      value: "#000000",
+    "alert-info": {
+      value: COLOR_BLUE,
       type: "color",
     },
-    white: {
-      value: "#ffffff",
+    "alert-danger": {
+      value: COLOR_RED,
       type: "color",
     },
-    gray: {
-      value: "#CCCCCC",
+    "alert-success": {
+      value: COLOR_GREEN,
+      type: "color",
+    },
+    "alert-warning": {
+      value: COLOR_ORANGE,
       type: "color",
     },
   },

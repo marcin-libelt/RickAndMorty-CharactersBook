@@ -3,25 +3,39 @@ export default function Button({
   value,
   onClick,
   disabled = false,
-  className,
-  icon,
+  className: additionalClassNames,
+  iconSvg: icon,
   iconPosition,
+  variant = "secondary",
 }: {
   label: string;
   value: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   className: string;
-  icon?: any;
+  iconSvg?: JSX.Element;
   iconPosition?: "left" | "right";
+  variant?: "primary" | "secondary";
 }) {
-  const disabledCls = disabled && "bg-gray cursor-not-allowed text-white";
+  /* 
+  list available dynamic class name, as TailwindCss can't purge them:
+  bg-secondary
+  bg-primary 
+  */
+
+  const disabledCls =
+    disabled &&
+    "!bg-gray-300 cursor-not-allowed !text-gray-400 !fill-gray-400 border-gray-400";
+
+  const classes = {
+    root: `flex px-2 py-1 items-center text-white fill-white text-base bg-${variant} rounded-lg border-2 border-white`,
+  };
 
   return (
     <button
       aria-label={label}
       onClick={onClick}
-      className={`${classes.root} ${className} ${disabledCls}`}
+      className={`${classes.root} ${additionalClassNames} ${disabledCls}`}
     >
       {!icon ? (
         <>{value}</>
@@ -39,7 +53,3 @@ export default function Button({
     </button>
   );
 }
-
-const classes = {
-  root: "flex px-2 py-1 items-center text-secondary text-base bg-primary rounded-lg",
-};

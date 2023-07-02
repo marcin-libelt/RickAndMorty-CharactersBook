@@ -1,15 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import { memo } from "react";
 import Button from "@/app/ui/Button";
-import ChevronRight from "./../../../public/chevron-right.svg";
-import ChevronLeft from "./../../../public/chevron-left.svg";
-import ChevronBarRight from "./../../../public/chevron-bar-right.svg";
-import ChevronBarLeft from "./../../../public/chevron-bar-left.svg";
+import {
+  ChevronBarRight,
+  ChevronBarLeft,
+  ChevronLeft,
+  ChevronRight,
+} from "@/app/ui/svg/chevrons";
 
 import { useRouter } from "next/navigation";
 
-export default function Pagination({
+export default memo(function Pagination({
   pages,
   next,
   prev,
@@ -19,7 +21,6 @@ export default function Pagination({
   prev: number | null;
 }): JSX.Element {
   const router = useRouter();
-  typeof ChevronRight;
 
   const current = prev ? prev + 1 : 1;
 
@@ -31,7 +32,7 @@ export default function Pagination({
           value={"First"}
           onClick={() => router.push(`/?page=1`)}
           className={""}
-          icon={<Image src={ChevronBarLeft} width={20} alt={""} />}
+          iconSvg={ChevronBarLeft()}
           iconPosition={"left"}
           disabled={prev === null}
         />
@@ -40,7 +41,7 @@ export default function Pagination({
           value={"Prev"}
           onClick={() => router.push(`/?page=${prev}`)}
           className={""}
-          icon={<Image src={ChevronLeft} width={20} alt={""} />}
+          iconSvg={ChevronLeft()}
           iconPosition={"left"}
           disabled={prev === null}
         />
@@ -52,11 +53,11 @@ export default function Pagination({
 
       <div className={classes.edge}>
         <Button
-          label={"Go to next page"}
+          label={"Click to go to next page"}
           value={"Next"}
           onClick={() => router.push(`/?page=${next}`)}
           className={""}
-          icon={<Image src={ChevronRight} width={20} alt={""} />}
+          iconSvg={ChevronRight()}
           iconPosition={"right"}
           disabled={next === null}
         />
@@ -65,16 +66,16 @@ export default function Pagination({
           value={"Last"}
           onClick={() => router.push(`/?page=${pages}`)}
           className={""}
-          icon={<Image src={ChevronBarRight} width={20} alt={""} />}
+          iconSvg={ChevronBarRight()}
           iconPosition={"right"}
           disabled={next === null}
         />
       </div>
     </nav>
   );
-}
+});
 
 const classes = {
-  root: "flex justify-between",
+  root: "flex justify-between my-5 items-center",
   edge: "flex gap-1",
 };

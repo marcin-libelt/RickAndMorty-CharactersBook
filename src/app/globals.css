@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply text-primary border-primary;
-}
+@layer base {
+  *,
+  body {
+    @apply text-secondary border-secondary;
+  }
 
-a {
-  @apply text-secondary underline hover:no-underline;
+  body {
+    @apply bg-sky-100;
+  }
+
+  a {
+    @apply text-secondary underline hover:no-underline;
+  }
 }

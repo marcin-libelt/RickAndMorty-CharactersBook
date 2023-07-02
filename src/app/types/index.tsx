@@ -18,5 +18,13 @@ export interface Character {
   status: string;
   gender: string;
   type: string;
-  episode: [Episode];
+  episode: Episode[];
+}
+
+export interface GenericList {
+  data: Array<object> | Array<JSX.Element> | object[] | any;
+  rendererItem: Function;
+  renderEmpty: JSX.Element;
+  rootClassName?: string;
+  itemClassName?: string;
 }

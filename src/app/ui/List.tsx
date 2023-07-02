@@ -1,22 +1,20 @@
-interface List {
-  data: object[];
-  rendererItem: Function;
-  renderEmpty: JSX.Element;
-  className?: string;
-}
+import { GenericList } from "../types";
 
 export default function List({
   data = [],
   rendererItem,
   renderEmpty,
-  className,
-}: List): JSX.Element {
+  rootClassName = "",
+  itemClassName = "",
+}: GenericList): JSX.Element {
   return !data.length ? (
     renderEmpty
   ) : (
-    <ul className={className}>
-      {data.map((item, index) => (
-        <li key={index}>{rendererItem(item)}</li>
+    <ul className={rootClassName}>
+      {data.map((item: object, index: number) => (
+        <li key={index} className={itemClassName}>
+          {rendererItem(item)}
+        </li>
       ))}
     </ul>
   );

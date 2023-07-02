@@ -125,9 +125,9 @@ export default async function Page({
 
 const classes = {
   title: "text-xl text-secondary font-bold mt-4 mb-2 pb-2 border-b",
-  infoBlock: "rounded-xl bg-gray-200",
+  infoBlock: "rounded-xl bg-background",
   container:
-    "flex items-center justify-between rounded-lg w-full bg-gray-200 p-5 my-5",
+    "flex items-center justify-between rounded-lg w-full bg-background p-5 my-5",
 };
 
 interface Props {

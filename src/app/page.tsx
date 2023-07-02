@@ -4,8 +4,9 @@ import { Character } from "./types";
 import Link from "next/link";
 import Picture from "./ui/Character/Picture";
 import Pagination from "./ui/Pagination";
-import List from "./ui/List";
+import List from "@/app/ui/List";
 import { Suspense } from "react";
+import AlertBar from "./ui/AlertBar";
 
 const query = gql`
   query Query($page: Int) {
@@ -41,19 +42,17 @@ export default async function Page({
     },
   });
 
-  const rendererItem = function (elem: Character): JSX.Element {
-    return (
-      <div className="relative">
-        <Picture {...elem} />
-        <Link
-          href={`/characters/${elem.name.replace(/\s/g, "-")}`}
-          className={"absolute bottom-0 text-sm rounded-sm"}
-        >
-          <h2 className={classes.label}>{elem.name}</h2>
-        </Link>
-      </div>
-    );
-  };
+  const rendererItem = (elem: Character): JSX.Element => (
+    <div className="relative">
+      <Picture {...elem} />
+      <Link
+        href={`/characters/${elem.name.replace(/\s/g, "-")}`}
+        className={"absolute bottom-0 text-sm rounded-sm"}
+      >
+        <h2 className={classes.label}>{elem.name}</h2>
+      </Link>
+    </div>
+  );
 
   return (
     <>
@@ -64,14 +63,12 @@ export default async function Page({
       />
 
       <section>
-        <Suspense>
-          <List
-            data={data.characters.results}
-            rendererItem={rendererItem}
-            renderEmpty={<p>{"List is empty."}</p>}
-            className={classes.list}
-          />
-        </Suspense>
+        <List
+          data={data.characters.results}
+          rendererItem={rendererItem}
+          renderEmpty={<AlertBar message="No Characters found" />}
+          rootClassName={classes.list}
+        />
       </section>
 
       <Pagination
