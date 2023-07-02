@@ -5,7 +5,6 @@ import Link from "next/link";
 import Picture from "./ui/Character/Picture";
 import Pagination from "./ui/Pagination";
 import List from "@/app/ui/List";
-import { Suspense } from "react";
 import AlertBar from "./ui/AlertBar";
 
 const query = gql`
@@ -46,7 +45,7 @@ export default async function Page({
     <div className="relative">
       <Picture {...elem} />
       <Link
-        href={`/characters/${elem.name.replace(/\s/g, "-")}`}
+        href={`/characters/${elem.id}/${elem.name}`}
         className={"absolute bottom-0 text-sm rounded-sm"}
       >
         <h2 className={classes.label}>{elem.name}</h2>

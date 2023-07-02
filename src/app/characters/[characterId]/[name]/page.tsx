@@ -6,28 +6,23 @@ import Picture from "@/app/ui/Character/Picture";
 import { Character } from "@/app/types";
 
 const GET_CHARACTER_BY_NAME = gql`
-  query GetCharcterByName($filter: FilterCharacter) {
-    characters(filter: $filter) {
-      info {
-        count
+  query Query($characterId: ID!) {
+    character(id: $characterId) {
+      id
+      name
+      status
+      gender
+      type
+      species
+      origin {
+        name
       }
-      results {
+      image
+      episode {
         id
         name
-        status
-        gender
-        type
-        species
-        origin {
-          name
-        }
-        image
-        episode {
-          id
-          name
-          air_date
-          episode
-        }
+        air_date
+        episode
       }
     }
   }
@@ -36,18 +31,16 @@ const GET_CHARACTER_BY_NAME = gql`
 export default async function Page({
   params,
 }: {
-  params: { slug: string };
+  params: { characterId: string; name: string };
 }): Promise<{}> {
   const { data } = await getClient().query({
     query: GET_CHARACTER_BY_NAME,
     variables: {
-      filter: {
-        name: params.slug.replace(/-/g, " "),
-      },
+      characterId: params.characterId,
     },
   });
 
-  const character = data.characters.results[0];
+  const character = data.character;
   const { name, origin, species, status, gender, type, episode }: Character =
     character;
 
@@ -131,15 +124,14 @@ const classes = {
 };
 
 interface Props {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: { characterId: string; name: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
 
   return {
-    title: decodeURI(params.slug),
+    title: decodeURI(params.name),
     description: "",
   };
 }
