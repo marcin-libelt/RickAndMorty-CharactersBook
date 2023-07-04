@@ -23,12 +23,12 @@ export default function Button({
   bg-primary 
   */
 
-  const disabledCls =
-    disabled &&
-    "!bg-gray-300 cursor-not-allowed !text-gray-400 !fill-gray-400 border-gray-400";
+  const disabledCls = !disabled
+    ? ""
+    : "!bg-gray-300 cursor-not-allowed !text-gray-400 !fill-gray-400 border-gray-400";
 
   const classes = {
-    root: `flex px-2 py-1 items-center text-white fill-white text-base bg-${variant} rounded-lg border-2 border-white`,
+    root: `flex px-2 py-1 items-center fill-white text-white text-base bg-${variant} rounded-lg border-2 border-white`,
   };
 
   return (
