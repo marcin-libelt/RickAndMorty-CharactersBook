@@ -6,6 +6,7 @@ import Picture from "./ui/Character/Picture";
 import Pagination from "./ui/Pagination";
 import List from "@/app/ui/List";
 import AlertBar from "./ui/AlertBar";
+import Section from "./ui/Section";
 
 const query = gql`
   query Query($page: Int) {
@@ -61,14 +62,14 @@ export default async function Page({
         prev={data.characters.info.prev}
       />
 
-      <section>
+      <Section labelby="characters-list">
         <List
           data={data.characters.results}
           rendererItem={rendererItem}
           renderEmpty={<AlertBar message="No Characters found" />}
           rootClassName={classes.list}
         />
-      </section>
+      </Section>
 
       <Pagination
         pages={data.characters.info.pages}

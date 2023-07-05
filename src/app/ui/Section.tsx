@@ -10,11 +10,14 @@ export default function Section({
   children: React.ReactNode;
 }) {
   const HeadingTag = `h${hLevel}` as keyof JSX.IntrinsicElements;
-
+  const classes = {
+    root: "mb-5",
+    heading: "text-secondary",
+  };
   return (
-    <section aria-labelledby={labelby} className="mb-5">
+    <section aria-labelledby={labelby} className={classes.root}>
       {title ? (
-        <HeadingTag id={labelby} className="text-secondary">
+        <HeadingTag id={labelby} className={classes.heading}>
           {title}
         </HeadingTag>
       ) : null}

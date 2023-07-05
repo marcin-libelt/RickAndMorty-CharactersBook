@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import EpisodeList from "@/app/ui/Episode/List";
 import MainInfo from "@/app/ui/Character/MainInfo";
 import Section from "@/app/ui/Section";
+import ButtonBack from "@/app/ui/ButtonBack";
 
 const GET_CHARACTER_BY_NAME = gql`
   query Query($characterId: ID!) {
@@ -46,6 +47,7 @@ export default async function Page({
     <>
       <Section labelby="character-name">
         <MainInfo data={character} />
+        <ButtonBack />
       </Section>
       <Section labelby="episodes-list" hLevel={2} title="Episodes list">
         <EpisodeList items={character.episode} />

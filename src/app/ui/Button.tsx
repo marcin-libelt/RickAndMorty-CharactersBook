@@ -25,10 +25,11 @@ export default function Button({
 
   const disabledCls = !disabled
     ? ""
-    : "!bg-gray-300 cursor-not-allowed !text-gray-400 !fill-gray-400 border-gray-400";
+    : "!bg-gray-300 cursor-not-allowed !text-gray-400 !fill-gray-400 border-gray-400 !opacity-100";
 
   const classes = {
-    root: `flex px-2 py-1 items-center fill-white text-white text-base bg-${variant} rounded-lg border-2 border-white`,
+    root: `flex px-2 py-1 items-center fill-white text-white text-base bg-${variant} 
+    rounded-lg border-2 border-white hover:opacity-md`,
   };
 
   return (

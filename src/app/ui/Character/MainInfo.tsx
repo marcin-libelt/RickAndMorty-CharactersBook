@@ -2,7 +2,6 @@ import { Character } from "@/app/types";
 import Picture from "@/app/ui/Character/Picture";
 
 export default function MainInfo({ data }: { data: Character }) {
-  console.log(data);
   const { name, origin, species, status, gender, type } = data;
 
   const featuresMap = [
@@ -29,13 +28,13 @@ export default function MainInfo({ data }: { data: Character }) {
   ];
 
   const classes = {
-    title: "text-xl text-secondary font-bold mt-4 mb-2 pb-2 border-b",
-    infoBlock: "rounded-xl bg-background",
+    title: "text-2xl text-primary font-bold mt-4 mb-2 pb-2 border-b",
+    infoBlock: "rounded-xl bg-wite",
   };
 
   return (
     <div className={classes.infoBlock}>
-      <div className="flex">
+      <div className="flex flex-column">
         <Picture {...data} />
         <div className="flex-1 px-4">
           <h1 id="character-name" className={classes.title}>
