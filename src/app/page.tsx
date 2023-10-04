@@ -44,11 +44,13 @@ export default async function Page({
 
   const rendererItem = (elem: Character): JSX.Element => (
     <div className="relative">
-      <Picture {...elem} />
       <Link
         href={`/characters/${elem.id}/${elem.name}`}
-        className={"absolute bottom-0 text-sm rounded-sm"}
+        className={
+          "relative block bottom-0 text-sm rounded-sm  focus:ring focus:ring-violet-300 hover:ring-violet-300"
+        }
       >
+        <Picture {...elem} />
         <h2 className={classes.label}>{elem.name}</h2>
       </Link>
     </div>
@@ -81,7 +83,8 @@ export default async function Page({
 }
 
 const classes = {
-  label: "bg-white px-3 rounded-sm lg:rounded-lg xl:rounded-xl",
+  label:
+    "absolute bottom-[2px] left-[2px]  text-xs text-black leading-4 bg-white px-3 py-1 rounded-sm lg:rounded-lg xl:rounded-xl",
   list: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3",
   listNav: "flex justify-between",
 };

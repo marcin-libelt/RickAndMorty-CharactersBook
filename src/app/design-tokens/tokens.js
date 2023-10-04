@@ -1,9 +1,9 @@
-const COLOR_PRIMARY = "#fb8500ff";
+const COLOR_PRIMARY = "#ffffff";
 const COLOR_PRIMARY_LIGHTER = "#ffb703ff";
-const COLOR_SECONDARY = "#023047ff";
-const COLOR_SECONDARY_LIGHTER = "#219ebcff";
-const COLOR_BACKGROUND = "#8ecae6ff";
-const COLOR_BLUE = "#2d3390";
+const COLOR_SECONDARY = "#000";
+const COLOR_SECONDARY_LIGHTER = "#a3b7d3";
+const COLOR_BACKGROUND = "#22272e"; //"#8ecae6ff";
+const COLOR_BLUE = "rgb(83,155,245)";
 const COLOR_RED = "#d55050";
 const COLOR_ORANGE = "#d65f22";
 const COLOR_GREEN = "#2c8613";
@@ -42,6 +42,10 @@ module.exports = {
     },
     background: {
       value: COLOR_BACKGROUND,
+      type: "color",
+    },
+    blue: {
+      value: COLOR_BLUE,
       type: "color",
     },
     "alert-info": {

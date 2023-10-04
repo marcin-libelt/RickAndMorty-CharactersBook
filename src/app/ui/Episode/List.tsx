@@ -30,7 +30,7 @@ export default function EpisodesTabs({ items }: any): JSX.Element {
 
   const rendererItem = ({ episode, name, air_date }: Episode): JSX.Element => (
     <>
-      <div className="flex justify-between hover:bg-gray-100">
+      <div className="flex justify-between hover:bg-gray-900">
         {episode.replace(/^(S\d{2}E)/, "e")} {name}
       </div>
       <div>{air_date}</div>
@@ -39,7 +39,7 @@ export default function EpisodesTabs({ items }: any): JSX.Element {
 
   return (
     <Tabs onSelect={setActiveTab}>
-      <TabList className={"flex my-5 gap-2"}>
+      <TabList className={"flex my-5 gap-2 justify-between sm:justify-normal"}>
         {list.map((name, index) => (
           <Tab key={index}>
             <Button
@@ -55,15 +55,15 @@ export default function EpisodesTabs({ items }: any): JSX.Element {
       </TabList>
       {panels.map((panel, index) => (
         <TabPanel key={index}>
-          <div className="flex justify-between text-xs text-gray">
-            <div className="text-primary">Episode title</div>
-            <div>Air date</div>
+          <div className="flex justify-between text-xs">
+            <div className="text-secondary-lighter">Episode title</div>
+            <div className="text-secondary-lighter">Air date</div>
           </div>
           <List
             data={panel}
             rendererItem={rendererItem}
             renderEmpty={<AlertBar message="No episode found" />}
-            itemClassName={"flex justify-between hover:bg-gray-100"}
+            itemClassName={"flex justify-between hover:bg-gray-900"}
           />
         </TabPanel>
       ))}

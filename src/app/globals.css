@@ -5,14 +5,14 @@
 @layer base {
   *,
   body {
-    @apply text-secondary border-secondary;
+    @apply text-primary border-secondary;
   }
 
   body {
-    @apply bg-sky-100;
+    @apply bg-background;
   }
 
   a {
-    @apply text-secondary underline hover:no-underline;
+    @apply text-secondary-lighter underline hover:no-underline;
   }
 }

@@ -8,7 +8,6 @@ export default function Header(): JSX.Element {
       <Link href={"/"} title="Back to homepage">
         <Image src={Logo} width={300} alt={""} priority={true} />
       </Link>
-      <p className="text-secondary">Characters</p>
     </header>
   );
 }

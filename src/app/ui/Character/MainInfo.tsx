@@ -34,9 +34,11 @@ export default function MainInfo({ data }: { data: Character }) {
 
   return (
     <div className={classes.infoBlock}>
-      <div className="flex flex-column">
-        <Picture {...data} />
-        <div className="flex-1 px-4">
+      <div className="sm:flex flex-column">
+        <div>
+          <Picture {...data} />
+        </div>
+        <div className="flex-1 sm:px-4">
           <h1 id="character-name" className={classes.title}>
             {name}
             <span className="block text-sm text-gray-500 font-normal">

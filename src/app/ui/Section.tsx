@@ -12,7 +12,7 @@ export default function Section({
   const HeadingTag = `h${hLevel}` as keyof JSX.IntrinsicElements;
   const classes = {
     root: "mb-5",
-    heading: "text-secondary",
+    heading: "text-primary",
   };
   return (
     <section aria-labelledby={labelby} className={classes.root}>
